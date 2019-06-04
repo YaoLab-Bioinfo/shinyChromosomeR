@@ -19,4 +19,4 @@ Installation
 
 Help Manual
 ------------
-[Overview of binQTL](https://github.com/venyao/shinyChromosomeR/blob/master/vignettes/shinyChromosomeROverview.pdf)
+[Overview of shinyChromosomeR](https://github.com/venyao/shinyChromosomeR/blob/master/vignettes/shinyChromosomeROverview.pdf)
