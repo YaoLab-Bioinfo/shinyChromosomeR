@@ -1,0 +1,341 @@
+---
+title: "Overview of shinyChromosomeR"
+author: "Yiming Yu and Wen Yao"
+date: '`r Sys.Date()`'
+output: pdf_document
+toc: yes
+vignette: |
+  %\VignetteEngine{knitr::rmarkdown} %\VignetteIndexEntry{Overview of shinyChromosomeR}
+---
+
+# 1 Introduction
+
+shinyChromosome is an Shiny application for interactive creation of non-circular plots 
+of whole genomes within the web browser. shinyChromosome is deployed at http://150.109.59.144:3838/shinyChromosome/, http://shinychromosome.ncpgr.cn/ and https://yimingyu.shinyapps.io/shinychromosome/, for online use.  
+
+shinyChromosomeR wraps the core script of shinyChromosome as an R package, 
+allowing the creation of non-circular whole genome diagram from the R command line.  
+
+In this vignette, we will rely on several simple, illustrative example datasets to demonstrate 
+the usage of **shinyChromosomeR**.  
+
+To use the **shinyChromosomeR** package, we need to load it into R first. 
+
+```{r message=FALSE}
+library(shinyChromosomeR)
+```
+
+# 2 Creation of single-genome plot using **shinyChromosomeR**  
+
+## 2.1 Essential steps to create a non-circular single genome plot
+
+To create a non-circular single genome plot, we need a dataset to 
+define the genome used in the single genome plot and the other 
+1-10 datasets to be displayed along all the chromosomes of the genome.  
+
+### 2.1.1 Read in the genome dataset
+
+The genome dataset is compulsory and defines the frame of a non-circular plot. 
+The genome dataset is basically a text file with 2 columns. 
+The 1st column is the chromosome ID. The 2nd column is the chromosome length. 
+The detailed format of the genome data is illustrated in the 
+'Input data format' menu (Under the 'Help' menu) of the 
+shinyChromosome application (http://150.109.59.144:3838/shinyChromosome/).  
+
+```{r}
+data.chr <- read.table(system.file("examples/single_genome/genome_data.txt", 
+                                   package="shinyChromosomeR"), 
+                       header=TRUE, as.is=TRUE, sep="\t")
+dim(data.chr)
+head(data.chr, 2)
+```
+
+### 2.1.2 Read in other input datasets to be displayed along all chromosomes of the input genome
+
+One or more datasets could be then read into R, which would be displayed along 
+all chromosomes of the genome dataset in Step 2.1.1. These datasets can be 
+used to create different types of plot, including 'point', 'line', 'bar', 
+'rect_gradual', 'rect_discrete', 'heatmap_gradual', 'heatmap_discrete', 'text', 'segment', 
+'vertical_line', 'horizontal_line' and 'ideogram'. Please check the 'Input data format' 
+menu (Under the 'Help' menu) of the shinyChromosome application 
+(http://150.109.59.144:3838/shinyChromosome/) for more details.  
+
+```{r}
+data.track.file <- system.file("examples/single_genome/point.txt", 
+                                package="shinyChromosomeR")
+data.track <- lapply(data.track.file, function(x){
+   dt <- read.table(x, header=TRUE, as.is=TRUE, sep="\t")
+   return(dt)
+})
+dim(data.track[[1]])
+head(data.track[[1]], 2)
+```
+
+### 2.1.3 Make the plot using the `single_genome_plot` function
+
+After all the input datasets has been prepared and read into R, 
+we can call the `single_genome_plot` function to make the plot.
+By default, different datasets in step 2.1.2 would be 
+displayed in different tracks. We can set the track of each 
+dataset using the `layer_index` parameter.
+We also need to set the plot type for each dataset in step 2.1.2.  
+
+```{r, fig.cap='Plot point using single_genome_plot.', fig.width=8, fig.height=3}
+single_genome_plot(data.chr=data.chr, data.track=data.track, plot_type="point")
+```
+
+## 2.2 Create different types of single genome plot using shinyChromosome
+
+### 2.2.1 Plot line
+
+```{r, fig.cap='Plot line using single_genome_plot.', fig.width=8, fig.height=3}
+data.chr <- read.table(system.file("examples/single_genome/genome_data.txt", 
+                                   package="shinyChromosomeR"), 
+                       header=TRUE, as.is=TRUE, sep="\t")
+head(data.chr, 2)
+
+data.track.file <- system.file("examples/single_genome/line.txt", 
+                                package="shinyChromosomeR")
+data.track.file
+
+data.track <- lapply(data.track.file, function(x){
+   dt <- read.table(x, header=TRUE, as.is=TRUE, sep="\t")
+   return(dt)
+})
+dim(data.track[[1]])
+head(data.track[[1]], 2)
+
+single_genome_plot(data.chr=data.chr, data.track=data.track, plot_type="line")
+```
+
+### 2.2.2 Plot point + line
+
+```{r, fig.cap='Plot point + line using single_genome_plot.', fig.width=8, fig.height=4}
+data.chr <- read.table(system.file("examples/single_genome/genome_data.txt", 
+                                   package="shinyChromosomeR"), 
+                       header=TRUE, as.is=TRUE, sep="\t")
+head(data.chr)
+
+data.track.file <- c(system.file("examples/single_genome/point.txt", package="shinyChromosomeR"), 
+                     system.file("examples/single_genome/line.txt", package="shinyChromosomeR"))
+data.track.file
+
+data.track <- lapply(data.track.file, function(x){
+   dt <- read.table(x, header=TRUE, as.is=TRUE, sep="\t")
+   return(dt)
+})
+dim(data.track[[1]])
+head(data.track[[1]], 2)
+dim(data.track[[2]])
+head(data.track[[2]], 2)
+
+single_genome_plot(data.chr=data.chr, data.track=data.track, plot_type=c("point", "line"))
+```
+
+### 2.2.3 Plot bar
+
+```{r, fig.cap='Plot bar using single_genome_plot.', fig.width=8, fig.height=3}
+data.chr <- read.table(system.file("examples/single_genome/genome_data.txt", 
+                                   package="shinyChromosomeR"), 
+                       header=TRUE, as.is=TRUE, sep="\t")
+head(data.chr, 2)
+
+data.track.file <- system.file("examples/single_genome/bar.txt", 
+                                package="shinyChromosomeR")
+data.track.file
+
+data.track <- lapply(data.track.file, function(x){
+   dt <- read.table(x, header=TRUE, as.is=TRUE, sep="\t")
+   return(dt)
+})
+dim(data.track[[1]])
+head(data.track[[1]], 2)
+
+single_genome_plot(data.chr=data.chr, data.track=data.track, plot_type="bar")
+```
+
+### 2.2.4 Plot heatmap_discrete
+
+```{r, fig.cap='Plot discrete heatmap using single_genome_plot.', fig.width=5, fig.height=4.5}
+data.chr <- read.table(system.file("examples/single_genome/genome_data.txt", 
+                                   package="shinyChromosomeR"), 
+                       header=TRUE, as.is=TRUE, sep="\t")
+head(data.chr, 2)
+
+data.track.file <- system.file("examples/single_genome/heatmap_discrete.txt", 
+                                package="shinyChromosomeR")
+data.track.file
+
+data.track <- lapply(data.track.file, function(x){
+   dt <- read.table(x, header=TRUE, as.is=TRUE, sep="\t")
+   return(dt)
+})
+dim(data.track[[1]])
+head(data.track[[1]], 2)
+
+single_genome_plot(data.chr=data.chr, data.track=data.track, 
+                   plot_type="heatmap_discrete", chr_plotype=2,
+                   margin_layer=0.01)
+```
+
+### 2.2.5 Plot ideogram
+
+```{r, fig.cap='Plot ideogram using single_genome_plot.', fig.width=5, fig.height=4.5}
+data.chr <- read.table(system.file("examples/single_genome/genome_data.txt", 
+                                   package="shinyChromosomeR"), 
+                       header=TRUE, as.is=TRUE, sep="\t")
+head(data.chr, 2)
+
+data.track.file <- system.file("examples/single_genome/ideogram.txt", 
+                                package="shinyChromosomeR")
+data.track.file
+
+data.track <- lapply(data.track.file, function(x){
+   dt <- read.table(x, header=TRUE, as.is=TRUE, sep="\t")
+   return(dt)
+})
+dim(data.track[[1]])
+head(data.track[[1]], 2)
+
+single_genome_plot(data.chr=data.chr, data.track=data.track, 
+                   plot_type="ideogram", chr_plotype=2, 
+                   margin_layer=0.01)
+```
+
+### 2.2.5 Plot bar + vertical_line
+
+```{r, fig.cap='Plot bar + vertical line using single_genome_plot.', fig.width=8, fig.height=3}
+data.chr <- read.table(system.file("examples/single_genome/genome_data.txt", 
+                                   package="shinyChromosomeR"), 
+                       header=TRUE, as.is=TRUE, sep="\t")
+head(data.chr, 2)
+
+data.track.file <- c(system.file("examples/single_genome/bar.txt", package="shinyChromosomeR"), 
+                     system.file("examples/single_genome/vertical_line.txt", package="shinyChromosomeR"))
+data.track.file
+
+data.track <- lapply(data.track.file, function(x){
+   dt <- read.table(x, header=TRUE, as.is=TRUE, sep="\t")
+   return(dt)
+})
+dim(data.track[[1]])
+head(data.track[[1]], 2)
+dim(data.track[[2]])
+head(data.track[[2]], 2)
+
+single_genome_plot(data.chr=data.chr, data.track=data.track, 
+                   plot_type=c("bar", "vertical_line"), chr_plotype=1, 
+                   margin_layer=0.01, layer_index=c(1, 1),
+                   col_type=c(2, 2), color_cus=c("gold", "grey50"))
+```
+
+The user can tune the appearance of the generated plot by setting
+the values of diverse parameters of the `single_genome_plot` function.  
+
+# 3 Create two genomes plot using **shinyChromosomeR**  
+
+## 3.1 Essential steps to create a non-circular two-genomes plot
+
+To create a non-circular two genomes plot, we need three datasets. 
+The first dataset defines the genome aligned along the horizontal axis. 
+The second dataset defines the genome aligned along the vertical axis. 
+The third dataset is the main dataset used to create the two genomes plot.  
+
+### 3.1.1 Read in the genome dataset aligned along the horizontal axis
+
+The format of the genome dataset should be the same as 
+the genome dataset illustrated in section 2.1.1.
+
+```{r}
+data.chr1 <- read.table(system.file("examples/two_genome/genome1_data.txt", 
+                                    package="shinyChromosomeR"), 
+                        header=TRUE, as.is=TRUE, sep="\t")
+dim(data.chr1)
+head(data.chr1, 2)
+```
+
+### 3.1.2 Read in the genome dataset aligned along the vertical axis
+
+The format of the genome dataset should be the same as 
+the genome dataset illustrated in section 2.1.1.
+
+```{r}
+data.chr2 <- read.table(system.file("examples/two_genome/genome2_data.txt", 
+                                    package="shinyChromosomeR"), 
+                        header=TRUE, as.is=TRUE, sep="\t")
+dim(data.chr2)
+head(data.chr2, 2)
+```
+
+### 3.1.3 Read in the main dataset
+
+```{r}
+data.2geno.plot <- read.table(system.file("examples/two_genome/point_gradual.txt", 
+                                          package="shinyChromosomeR"), 
+                              header=TRUE, as.is=TRUE, sep="\t")
+head(data.2geno.plot, 2)
+```
+
+### 3.1.4 Make the plot using the `two_genomes_plot` function
+
+```{r, fig.cap='Output figure of example7.', fig.width=5, fig.height=5}
+two_genomes_plot(data.chr1=data.chr1, data.chr2=data.chr2, 
+                 data.2geno.plot=data.2geno.plot, plot_type="point_gradual")
+```
+
+## 3.2 Create different types of two-genomes plot using shinyChromosome
+
+### 3.2.1 Plot rect_discrete
+
+```{r, fig.cap='Output figure of example8.', fig.width=5, fig.height=5}
+data.chr1 <- read.table(system.file("examples/two_genome/genome1_data.txt", 
+                                    package="shinyChromosomeR"), 
+                        header=TRUE, as.is=TRUE, sep="\t")
+head(data.chr1, 2)
+
+data.chr2 <- read.table(system.file("examples/two_genome/genome2_data.txt", 
+                                    package="shinyChromosomeR"), 
+                        header=TRUE, as.is=TRUE, sep="\t")
+head(data.chr2, 2)
+
+data.2geno.plot <- read.table(system.file("examples/two_genome/rect_discrete.txt", 
+                                          package="shinyChromosomeR"), 
+                              header=TRUE, as.is=TRUE, sep="\t")
+head(data.2geno.plot, 2)
+
+two_genomes_plot(data.chr1=data.chr1, data.chr2=data.chr2, 
+                 data.2geno.plot=data.2geno.plot, plot_type="rect_discrete", 
+                 theme_sty="theme6", vertical=1, horizontal=1)
+```
+
+### 3.2.2 Plot segment
+
+```{r, fig.cap='Output figure of example8.', fig.width=5, fig.height=5}
+data.chr1 <- read.table(system.file("examples/two_genome/genome1_data.txt", 
+                                    package="shinyChromosomeR"), 
+                        header=TRUE, as.is=TRUE, sep="\t")
+head(data.chr1, 2)
+
+data.chr2 <- read.table(system.file("examples/two_genome/genome2_data.txt", 
+                                    package="shinyChromosomeR"), 
+                        header=TRUE, as.is=TRUE, sep="\t")
+head(data.chr2, 2)
+
+data.2geno.plot <- read.table(system.file("examples/two_genome/segment.txt", 
+                                          package="shinyChromosomeR"), 
+                              header=TRUE, as.is=TRUE, sep="\t")
+head(data.2geno.plot, 2)
+
+two_genomes_plot(data.chr1=data.chr1, data.chr2=data.chr2, 
+                 data.2geno.plot=data.2geno.plot, plot_type="segment", 
+                 theme_sty="theme6", vertical=1, horizontal=1)
+```
+
+# 4 Session Information
+
+The version number of R and packages loaded for generating the vignette were:
+
+```{r}
+sessionInfo()
+```
+

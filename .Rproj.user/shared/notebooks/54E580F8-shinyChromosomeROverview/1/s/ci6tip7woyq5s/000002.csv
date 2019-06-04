@@ -1,0 +1,4 @@
+"0","data.chr1 <- read.table(system.file(""examples/two_genome/genome1_data.txt"", "
+"0","                                    package=""shinyChromosomeR""), "
+"0","                        header=TRUE, as.is=TRUE, sep=""\t"")"
+"0","head(data.chr1, 2)"

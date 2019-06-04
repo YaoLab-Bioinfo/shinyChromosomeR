@@ -1,0 +1,14 @@
+
+import(plyr)
+import(ggplot2)
+import(RColorBrewer)
+import(ggthemes)
+
+importFrom(reshape2, melt)
+importFrom(grDevices, "adjustcolor", "col2rgb", "rgb")
+  importFrom("stats", "start")
+
+export(
+    single_genome_plot, two_genomes_plot
+)
+
