@@ -1,9 +1,0 @@
-"0",""
-"0","single_genome_plot(data.chr=data.chr, data.track=data.track, "
-"0","                   plot_type=c(""bar"", ""ideogram""), chr_plotype=1, "
-"0","                   margin_layer=0.01, layer_index=c(1, 2),"
-"0","                   col_type=c(2, 2), height_layer=c(0.08, 0.02),"
-"0","                   margin_layer=c(0.01, 0.004))"
-"2","Error in single_genome_plot(data.chr = data.chr, data.track = data.track,  : 
-  formal argument ""margin_layer"" matched by multiple actual arguments
-"
