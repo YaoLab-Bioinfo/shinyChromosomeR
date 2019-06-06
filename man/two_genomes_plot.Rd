@@ -2,10 +2,10 @@
 \alias{two_genomes_plot}
 
 \title{
-Creation of non-circular two genomes plots
+  Creation of non-circular two genomes plots
 }
 \description{
-The function create two genomes plots for comparison of data across two genomes.
+  The function to create two genomes plots for comparison of data across two genomes.
 }
 \usage{
 two_genomes_plot(data.chr1="", data.chr2="", data.2geno.plot="",
@@ -38,7 +38,7 @@ two_genomes_plot(data.chr1="", data.chr2="", data.2geno.plot="",
     The main dataset used to create the two genomes plot.
   }
   \item{theme_sty}{
-    Select one figure theme from the following list: "theme1", "theme2",
+    Choose one figure theme from the following list: "theme1", "theme2",
     "theme3", "theme4", "theme5", "theme6", "theme7", "theme8",
     "theme9", "theme10", "theme11", "theme12", "theme13", "theme14",
     "theme15", "theme16", "theme17" and "theme18".
@@ -53,7 +53,7 @@ two_genomes_plot(data.chr1="", data.chr2="", data.2geno.plot="",
     Y axis title.
   }
   \item{title_font_face}{
-    Font face, for example "plain", "italic", "bold" or "bold.italic".
+    Font face of figure title, for example "plain", "italic", "bold" or "bold.italic".
   }
   \item{xlabel}{
     Show or hide tick labels on the X-axis.
@@ -86,8 +86,8 @@ two_genomes_plot(data.chr1="", data.chr2="", data.2geno.plot="",
   \item{sel_gral_col}{
     Data color for plot_type 'point_gradual' or 'rect_gradual'.
     By default, this parameter was set as "1" and predefined color would be used.
-    If the option was set as "2", "low-high" color gradient would be used.
-    If the option was set as "3", "low-mid-high" color gradient would be used.
+    If this parameter was set as "2", "low-high" gradient color would be used.
+    If this parameter was set as "3", "low-mid-high" gradient color would be used.
   }
   \item{gral_col_tp}{
     If sel_gral_col was set as "1", choose one data color from the following list:
@@ -105,20 +105,18 @@ two_genomes_plot(data.chr1="", data.chr2="", data.2geno.plot="",
   \item{col_type}{
     Data color for plot_type 'point_discrete', 'segment' or 'rect_discrete'.
     By default, this parameter was set as "1" and random assigned color would be used.
-    To customize one color for data, users should choose a color from the color palette.
-    To customize color for data with multiple groups, the column indicating
-    different groups should be named as "color" in the input data.
-    Users should provide a character string assigning colors to each group.
-    For example, "a:red;b:green;c:blue", in which "a b c" represent different data groups.
+    To customize a single color for the data, set this parameter as "2".
+    To assign different colors for differing data groups, set this parameter as "2" and
+    provide a "color" column in the input data to indicate different data groups.
     Color for data groups without assigned color would be set as "NA".
     Hex color codes as "#FF0000" are also supported. See example data for more details.
     "1" means "random", "2" means "one custom color" and "3" means "custom for data with multi-group".
   }
   \item{color_cus}{
-    If "col_type" was set as "2", a specific color should be specified using this option, for example "#FF0000".
+    If "col_type" was set as "2", a specific color should be specified using this parameter, for example "#FF0000".
   }
   \item{color_mulgp}{
-    If col_type was set as 3, users should provide a character string like "a:red;b:blue;c:cyan" to assign colors to each group .
+    If col_type was set as "3"", users should provide a character string like "a:red;b:blue;c:cyan" to assign colors to each group .
   }
   \item{col_transpt}{
     A decimal number in [0, 1] to adjust the color transparency.
@@ -133,7 +131,8 @@ two_genomes_plot(data.chr1="", data.chr2="", data.2geno.plot="",
   \item{symbol_point_type}{
     Symbol used for different points.
     By default, this parameter was set as "1" and one custom symbol would be used.
-    If the option was set "2", the uploaded data should include a "shape" column with a categorical character vector.
+    If the option was set as "2", the uploaded data should include a "shape" column
+    composed of a categorical character vector.
   }
   \item{point_size}{
     Numeric value used to set the point size for plot_type "point_gradual" or "point_discrete".
@@ -142,7 +141,8 @@ two_genomes_plot(data.chr1="", data.chr2="", data.2geno.plot="",
   \item{point_size_type}{
     Value used for different size of points.
     By default, this parameter was set as "1" and one custom symbol would be used.
-    If the option was set "2", the uploaded data should include a "size" column with a categorical character vector.
+    If the option was set "2", the uploaded data should include a "size"
+    column composed of a categorical character vector.
   }
   \item{line_size}{
     Numeric value used to set the line width for plot_type "segment".
@@ -152,13 +152,13 @@ two_genomes_plot(data.chr1="", data.chr2="", data.2geno.plot="",
     "1" means "show", while "2" means "hide".
   }
   \item{vertical_col}{
-    If vertical was set as "1", color of the vertical lines, for example "#000000".
+    Color of the vertical lines, for example "#000000".
   }
   \item{vertical_size}{
-    If vertical was set as "1", line width of the vertical lines, for example 0.2.
+    Line width of the vertical lines, for example 0.2.
   }
   \item{vertical_type}{
-    If vertical was set as "1", line type of the vertical lines, for example "solid", "dashed",
+    Line type of the vertical lines, for example "solid", "dashed",
     "dotted", "dotdash", "longdash" or "twodash".
   }
   \item{horizontal}{
@@ -166,13 +166,13 @@ two_genomes_plot(data.chr1="", data.chr2="", data.2geno.plot="",
     "1" means "show", while "2" means "hide".
   }
   \item{horizontal_col}{
-    If horizontal was set "1", color of the horizontal lines, for example horizontal_col="#000000".
+    Color of the horizontal lines, for example horizontal_col="#000000".
   }
   \item{horizontal_size}{
-    If horizontal was set "1", line width of the horizontal lines, for example horizontal_size=0.2.
+    Line width of the horizontal lines, for example horizontal_size=0.2.
   }
   \item{horizontal_type}{
-    If horizontal was set "1", line type of the horizontal lines, for example "solid", "dashed",
+    Line type of the horizontal lines, for example "solid", "dashed",
     "dotted", "dotdash", "longdash" or "twodash".
   }
   \item{add_border}{
@@ -180,61 +180,62 @@ two_genomes_plot(data.chr1="", data.chr2="", data.2geno.plot="",
     "1" means "add cell borders", while "2" means "not add".
   }
   \item{border_col}{
-    Borders color. If add_border was set "1", a specific color should be specified by the users, for example "#000000".
+    Borders color. If add_border was set as "1", a specific color should be specified by the users, for example "#000000".
   }
   \item{linetype}{
-    The line type to be used to plot the data, when plot_type was set "segment",
+    The line type to be used to plot the data, when plot_type was set as "segment",
     for example "solid", "dashed", "dotted", "dotdash", "longdash" or "twodash".
   }
   \item{col_lgd}{
-    Control the appearance of the color legend in the plotting region.
+    Sow (or not) the color legend in the plotting region.
     "1" means "show", while "2" means "hide".
   }
   \item{col_lgd_name}{
-    Title of the color legend, when col_lgd was set "1".
+    Title of the color legend.
     Null value will result in an empty title.
   }
   \item{col_lgd_mdy_label}{
-    The labels of different colors in the color legend, when col_lgd was set "1" and
-    plot_type was set "point_discrete", "segment" or "rect_discrete".
+    Modify (or not) the labels of different colors in the color legend, when col_lgd was set as "1" and
+    plot_type was set as "point_discrete", "segment" or "rect_discrete".
     "1" means "modify labels", while "2" means "not modify".
   }
   \item{col_lgd_label}{
-    If col_lgd_mdy_label was set "1", character vector of arbitrary length is accepted and adjusted automatically
+    If col_lgd_mdy_label was set as "1", character vector of arbitrary length is accepted and adjusted automatically
     to the number of groups, which is separated by commas.
     For example, "a" or "a,b,c".
   }
   \item{size_lgd}{
-    If plot_type was set "point", control the appearance of the size legend in the plotting region.
+    Show (or not) the size legend in the plotting region for plot_type "point".
     "1" means "show", while "2" means "hide".
   }
   \item{size_lgd_name}{
-    Title of the size legend, when size_lgd was set "1", like "size".
+    Title of the size legend, when size_lgd was set as "1", for example "size".
     Null value will result in an empty title.
   }
   \item{size_lgd_mdy_label}{
-    The labels of legend in size legend, when size_lgd was set "1" and plot_type was set "point_gradual" or "point_discrete".
+    Modify (or not) the labels of legend in size legend, when size_lgd was set as
+    "1" and plot_type was set as "point_gradual" or "point_discrete".
     "1" means "modify labels", while "2" means "not modify".
   }
   \item{size_lgd_label}{
-    If size_lgd_mdy_label was set "1", character vector of arbitrary length is accepted and adjusted automatically
+    If size_lgd_mdy_label was set as "1", character vector of arbitrary length is accepted and adjusted automatically
     to the number of groups, which is separated by commas.
     For example, "a" or "a,b,c".
   }
   \item{shape_lgd}{
-    If plot_type was set "point", control the appearance of the shape legend in the plotting region.
+    Show (or not) the shape legend in the plotting region for plot_type "point".
     "1" means "show", while "2" means "hide".
   }
   \item{shape_lgd_name}{
-    Title of the shape legend, when shape_lgd was set "1", like "symbol".
+    Title of the shape legend, when shape_lgd was set as "1", for example "symbol".
     Null value will result in an empty title.
   }
   \item{shape_lgd_mdy_label}{
-    The labels of legend in shape legend, when shape_lgd was set "1" and plot_type was set "point_gradual" or "point_discrete".
+    The labels of legend in shape legend, when shape_lgd was set as "1" and plot_type was set as "point_gradual" or "point_discrete".
     "1" means "modify labels", while "2" means "not modify".
   }
   \item{shape_lgd_label}{
-    If shape_lgd_mdy_label was set "1", character vector of arbitrary length is accepted and adjusted automatically
+    If shape_lgd_mdy_label was set as "1", character vector of arbitrary length is accepted and adjusted automatically
     to the number of groups, which is separated by commas.
     For example, "a" or "a,b,c".
   }

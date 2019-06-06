@@ -94,7 +94,7 @@ single_genome_plot(data.chr="", data.track="", plot_type="point",
   \item{col_type}{
     Data color for plot_type 'point', 'line', 'bar' and 'segment'.
     By default, this parameter was set as "1" and random assigned color would be used.
-    To customize one color for data, set this parameter as 2.
+    To customize one color for the dataset, set this parameter as 2.
     To customize color for data with multiple groups, set this parameter as 3.
     And the column indicating different groups in the uploaded data should be named as "color".
     Users should provide a character string assigning colors to each group.
@@ -105,7 +105,7 @@ single_genome_plot(data.chr="", data.track="", plot_type="point",
     should be equal to that of the values received through the data.track parameter.
   }
   \item{color_cus}{
-    If col_type was set as 2, a specific color should be specified using this option, like "#FF0000" or c("red", "blue").
+    If col_type was set as 2, a specific color should be specified for each dataset, for example "#FF0000" or c("red", "blue").
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
@@ -116,26 +116,26 @@ single_genome_plot(data.chr="", data.track="", plot_type="point",
     equal to that of the values received through the data.track parameter.
   }
   \item{col_transpt}{
-    A decimal number in [0, 1] to adjust the color transparency, like 1 or 0.5.
+    A decimal number in [0, 1] to adjust the color transparency, for example 1 or 0.5.
     The higher the value, the deeper the color. The number of values received
     through this parameter should be equal to that of the values
     received through the data.track parameter.
   }
   \item{add_border}{
-    Add borders to the grids, which can be used to separate cells from each other.
+    Add (or not) borders to the grids, which can be used to separate cells from each other.
     "1" means "add cell borders", while "2" means "not add".
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{border_col}{
-    Borders color. If add_border was set "1", a specific color should be specified by the users, like "#000000".
+    Borders color. If add_border was set as "1", a specific color should be specified by the users, for example "#000000".
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{rect_col}{
-    The color to be used to plot the data, when plot_type was set "rect_discrete".
+    Data color for plot_type "rect_discrete".
     By default, this parameter was set as "1" and random assigned color would be used.
-    If the option was set as "2", all data will be filled by a specified color.
+    If the option was set as "2", all rects will be filled by a specified color.
     If the option was set as "3", the 4th column of the uploaded data should be a
     categorical character vector with no more than 50 groups.
     Users should provide values as "a:red;b:green;c:blue", in which "a b c" represent
@@ -146,7 +146,7 @@ single_genome_plot(data.chr="", data.track="", plot_type="point",
     equal to that of the values received through the data.track parameter.
   }
   \item{rect_col_dis}{
-    If rect_col was set as "2", all data will be filled by a specified color by this parameter, like "#FF0000".
+    If rect_col was set as "2", all rects will be filled by a specified color by this parameter, for example "#FF0000".
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
@@ -160,16 +160,16 @@ single_genome_plot(data.chr="", data.track="", plot_type="point",
     equal to that of the values received through the data.track parameter.
   }
   \item{rect_grad_col}{
-    Colors to be used for the data, when plot_type was set "rect_gradual".
+    Data color for plot_type "rect_gradual".
     By default, this parameter was set as "1" and predefined color would be used.
-    If the option was set as "2", color gradient is created as "low-high" pattern.
-    If the option was set as "3", color gradient is created as "low-mid-high" pattern.
+    If this parameter was set as "2", "low-high" gradient color would be used.
+    If this parameter was set as "3", "low-mid-high" gradient color would be used.
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{col_rect}{
-    A color vector for gradual rectangles, when rect_grad_col is "1".
-    Every value of this vector should be chosen from the following list:
+    A color vector for gradual rectangles, when rect_grad_col is set as "1".
+    Every element of this vector should be chosen from the following list:
     "blue", "red", "green", "cyan",
     "purple", "pink", "orange", "yellow", "navy", "seagreen", "maroon",
     "olivedrab", "gold", "lightblue", "navy.yellow", "purple.seagreen",
@@ -178,48 +178,49 @@ single_genome_plot(data.chr="", data.track="", plot_type="point",
     equal to that of the values received through the data.track parameter.
   }
   \item{rect_grad_cus_2cols}{
-    If rect_grad_col was set as "2", low-high color to be used for the data.
-    For example, "blue.red".
+    If rect_grad_col was set as "2", please provide two color values representing
+    the low and the high color for each dataset, for example "#0016DB" and "#FFFF00".
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{rect_grad_cus_3cols}{
-    If rect_grad_col was set as "3", low-mid-high color to be used for the data.
-    For example, "blue.white.red".
+    If rect_grad_col was set as "3", please provide three color values representing
+    the low, the mid and the high color, for example "#0016DB", "#FFFFFF" and "#FFFF00".
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{sel_heatmap_col}{
-    Colors to be used for the data, when plot_type was set "heatmap_gradual".
+    Data color for plot_type "heatmap_gradual".
     By default, this parameter was set as "1" and predefined color would be used.
-    If the option was set as "2", color gradient is created as "low-high" pattern.
-    If the option was set as "3", color gradient is created as "low-mid-high" pattern.
+    If the option was set as "2", "low-high" gradient color would be used.
+    If the option was set as "3", "low-mid-high" gradient color would be used.
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{hmap_col}{
-    If sel_heatmap_col was set as "1", Select one color from color list as "blue.white.red", "green.black.red",
+    If sel_heatmap_col was set as "1", choose one color from the following lisr:
+    "blue.white.red", "green.black.red",
     "green.yellow.red", "purple.yellow.red", "blue.green.red",
     "blue.yellow.green" and "cyan.white.deeppink1".
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{heatmap_col_cus_2cols}{
-    If sel_heatmap_col was set as "2", low-high color to be used for the data.
-    For example, "blue.red".
+    If sel_heatmap_col was set as "2", please provide two color values representing
+    the low and the high color for each dataset, for example "#0016DB" and "#FFFF00".
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{heatmap_col_cus_3cols}{
-    If sel_heatmap_col was set as "3", low-mid-high color to be used for the data.
-    For example, "blue.white.red".
+    If sel_heatmap_col was set as "3", please provide three color values representing
+    the low, the mid and the high color, for example "#0016DB", "#FFFFFF" and "#FFFF00".
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{hmap_col_dis}{
-    The color to be used to plot the data, when plot_type was set "heatmap_discrete".
+    Data color for plot_type "heatmap_discrete".
     By default, this parameter was set as "1" and random assigned color would be used.
-    If the option was set "2", the 4th column of the uploaded data should
+    If the option was set as "2", the 4th column of the uploaded data should
     be a categorical character vector with no more than 50 groups.
     Users should provide values as "a:red;b:green;c:blue",
     in which "a b c" represent different data categories indicated
@@ -230,7 +231,7 @@ single_genome_plot(data.chr="", data.track="", plot_type="point",
     equal to that of the values received through the data.track parameter.
   }
   \item{hmap_col_dis_cus}{
-    If hmap_col_dis was set "2", the 4th column of the uploaded data
+    If hmap_col_dis was set as "2", the 4th column of the uploaded data
     should be a categorical character vector with no more than 50 groups.
     Users should provide values as "a:red;b:green;c:blue",
     in which "a b c" represent different data categories indicated by
@@ -239,9 +240,9 @@ single_genome_plot(data.chr="", data.track="", plot_type="point",
     equal to that of the values received through the data.track parameter.
   }
   \item{sel_symbol_point}{
-    Symbol used for different points, when plot_type was set "point".
+    Symbol used for different points for plot_type "point".
     By default, this parameter was set as "1" and one custom symbol would be used.
-    If the option was set "2", the uploaded data should include a "shape" column with a categorical character vector.
+    If the option was set as "2", the uploaded data should include a "shape" column with a categorical character vector.
     A single integer can be used to set the shape of all points or a integer
     column named as "shape" in the input data can be used to
     set the shape of different points.
@@ -249,48 +250,47 @@ single_genome_plot(data.chr="", data.track="", plot_type="point",
     equal to that of the values received through the data.track parameter.
   }
   \item{symbol_point}{
-    If sel_symbol_point was set "1", symbol used for different points, like 16.
+    Integers to set the symbol of different points.
     Applicable values are integers in [0-25].
     Check "http://www.endmemo.com/program/R/pchsymbols.php" for more details.
-    A single integer can be used to set the shape of all points.
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{sel_point_size}{
-    Value used for different size of points, when plot_type was set "point".
+    Numeric values to set the point size for plot_type "point".
     By default, this parameter was set as "1" and one custom symbol would be used.
-    If the option was set "2", the uploaded data should include a "size" column with a categorical character vector.
+    If the option was set as "2", the uploaded data should include a "size" column with a categorical character vector.
     A single numeric value can be used to set the size of all points or a numeric column named
     as "size" in the input data can be used to set the size of different points.
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{point_size}{
-    If sel_point_size was set "1", value used for different size of points, like 0.8.
+    If sel_point_size was set as "1", provide one or more numeric values to set the point size of different datasets.
     A single numeric value can be used to set the size of all points.
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{line_color}{
-    The color to be used to plot the data, when plot_type should be chosen from the following list: 'vertical_line' and 'horizontal_line', like "#FF0000".
+    Data color for plot_type 'vertical_line' and 'horizontal_line', for example "#FF0000".
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{line_size}{
-    The line width to be used to plot the data, when plot_type should be chosen from the following list: "line", "vertical_line", "horizontal_line" and
-    "segment", like 0.2. The number of values received through this parameter should be
+    Numeric values to set the line width for plot_type: "line", "vertical_line", "horizontal_line" and
+    "segment", for example 0.2. The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{fill_area}{
-    Fill the area below the lines, when plot_type was set "line".
+    Fill (or not) the area below the lines, when plot_type was set "line".
     By default, this parameter was set as "2".
     "1" means "fill the area", while "2" means "not fill".
   }
   \item{sel_area_type}{
     Color to be used to fill the area, which can be identical with lines
     color or be specified by the users.
-    If the option was set "1", all data will be filled by the color identical with lines.
-    If the option was set "2", all data will be filled by a specified color as "blue".
+    If the option was set as "1", all data will be filled by the color of lines.
+    If the option was set as "2", all data will be filled by a specified color, for example "blue".
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
@@ -300,182 +300,183 @@ single_genome_plot(data.chr="", data.track="", plot_type="point",
     equal to that of the values received through the data.track parameter.
   }
   \item{linetype}{
-    The line type to be used to plot the data, when plot_type should be chosen from the following list: "line", "vertical_line", "horizontal_line" and
-    "segment", like "solid", "dashed", "dotted", "dotdash", "longdash" and "twodash".
+    Set the line type for plot_type: "line", "vertical_line", "horizontal_line" and
+    "segment", for example "solid", "dashed", "dotted", "dotdash", "longdash" and "twodash".
     The line type is automatically set as "solid" for line with more than one color.
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{add_arrow}{
-    If plot_type was set segment, add arrow head for the segment.
+    Add (or not) arrow head for the segment for plot_type segment.
     "1" means "add arrow head", while "2" means "not add arrow head".
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{arrow_pos}{
-    The position of arrow head, when add_arrow was set "1".
+    The position of arrow head, when add_arrow was set as "1".
     "1" means "line end", while "2" means "line beginning".
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{arrow_size}{
-    The size of arrow head, when add_arrow was set "1", like 0.1.
+    The size of arrow head, when add_arrow was set as "1", for example 0.1.
     The number of values received through this parameter
     should be equal to that of the values received through the data.track parameter.
   }
   \item{text_col}{
-    If plot_type was set "text", the font color is valid, like "#000000".
+    Font color for plot_type "text", for example "#000000".
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{text_size}{
-    If plot_type was set "text", the text size is valid, like 2.
+    Font size for plot_type "text", for example 2.
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{font_face}{
-    If plot_type was set "text", the font face is valid, like "plain", "italic", "bold" and "bold.italic".
+    Font face for plot_type "text", for example "plain", "italic", "bold" and "bold.italic".
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{text_angle}{
-    If plot_type was set "text", the text angle is valid, which is decimal number in [0, 360], like 60.
+    Text angle for plot_type "text", which is a decimal number in [0, 360], for example 60.
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{col_lgd}{
-    Control the appearance of the color legend in the plotting region.
+    Sow (or not) the color legend in the plotting region.
     "1" means "show", while "2" means "hide".
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{col_lgd_name}{
-    Title of the color legend, when col_lgd was set "1", like "color".
+    Title of the color legend.
     Null value will result in an empty title.
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{col_lgd_mdy_label}{
-    The labels of different colors in the color legend, when col_lgd was set "1" and plot_type was not set "rect_gradual" or "heatmap_gradual".
+    Modify (or not) the labels of different colors in the color legend, when col_lgd was set as "1" and
+    plot_type was not set as "rect_gradual" or "heatmap_gradual".
     "1" means "modify labels", while "2" means "not modify".
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{col_lgd_label}{
-    If col_lgd_mdy_label was set "1", character vector of arbitrary length is accepted and adjusted automatically
+    If col_lgd_mdy_label was set as "1", character vector of arbitrary length is accepted and adjusted automatically
     to the number of groups, which is separated by commas.
     For example, "a" or "a,b,c".
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{size_lgd}{
-    If plot_type was set "point", control the appearance of the size legend in the plotting region.
+    Show (or not) the size legend in the plotting region for plot_type "point".
     "1" means "show", while "2" means "hide".
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{size_lgd_name}{
-    Title of the size legend, when size_lgd was set "1", like "size".
+    Title of the size legend, when size_lgd was set as "1", for example "size".
     Null value will result in an empty title.
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{size_lgd_mdy_label}{
-    The labels of legend in size legend, when size_lgd was set "1" and plot_type was set "point".
+    Modify (or not) the labels of legend in size legend, when size_lgd was set as "1" and plot_type was set as "point".
     "1" means "modify labels", while "2" means "not modify".
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{size_lgd_label}{
-    If size_lgd_mdy_label was set "1", character vector of arbitrary length is accepted and adjusted automatically
+    If size_lgd_mdy_label was set as "1", character vector of arbitrary length is accepted and adjusted automatically
     to the number of groups, which is separated by commas.
     For example, "a" or "a,b,c".
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{shape_lgd}{
-    If plot_type was set "point", control the appearance of the shape legend in the plotting region.
+    Show (or not) the shape legend in the plotting region for plot_type "point".
     "1" means "show", while "2" means "hide".
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{shape_lgd_name}{
-    Title of the shape legend, when shape_lgd was set "1", like "symbol".
+    Title of the shape legend, when shape_lgd was set as "1", for example "symbol".
     Null value will result in an empty title.
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{shape_lgd_mdy_label}{
-    The labels of legend in shape legend, when shape_lgd was set "1" and plot_type was set "point".
+    The labels of legend in shape legend, when shape_lgd was set as "1" and plot_type was set as "point".
     "1" means "modify labels", while "2" means "not modify".
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{shape_lgd_label}{
-    If shape_lgd_mdy_label was set "1", character vector of arbitrary length is accepted and adjusted automatically
+    If shape_lgd_mdy_label was set as "1", character vector of arbitrary length is accepted and adjusted automatically
     to the number of groups, which is separated by commas.
     For example, "a" or "a,b,c".
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{line_type_lgd}{
-    If plot_type was set "vertical_line" or "horizontal_line",
-    control the appearance of the line type legend in the plotting region.
+    Show (or not) the line type legend in the plotting region for plot_type "vertical_line" or "horizontal_line",
     "1" means "show", while "2" means "hide".
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{line_type_lgd_name}{
-    Title of the line type legend, when line_type_lgd was set "1", like "linetype".
+    Title of the line type legend, when line_type_lgd was set as "1", for example "linetype".
     Null value will result in an empty title.
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{line_type_lgd_mdy_label}{
-    The labels of legend in linetype legend, when line_type_lgd was set "1" and plot_type was set "vertical_line" or "horizontal_line".
+    The labels of legend in linetype legend, when line_type_lgd was set as "1" and plot_type was set as "vertical_line" or "horizontal_line".
     "1" means "modify labels", while "2" means "not modify".
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{line_type_lgd_label}{
-    If line_type_lgd_mdy_label was set "1", character vector of arbitrary length is accepted and adjusted automatically
+    If line_type_lgd_mdy_label was set as "1", character vector of arbitrary length is accepted and adjusted automatically
     to the number of groups, which is separated by commas.
     For example, "a" or "a,b,c".
     The number of values received through this parameter should be
     equal to that of the values received through the data.track parameter.
   }
   \item{lgd_pos}{
-    The position to place the legend. "1" means "right", while "2" means "bottom".
+    The position to place the legend. "1" means "right" of the main plot,
+    while "2" means "bottom" of the main plot.
   }
   \item{lgd_space_size}{
     Percent of legend size relative to the main plotting region.
-    Applicable values are numbers in [0-1], like 0.04.
+    Applicable values are numbers in [0-1], for example 0.04.
   }
   \item{lgd_intra_size}{
-    Intra-spacing between different legends, like 40.
+    Intra-spacing between different legends, for example 40.
   }
   \item{lgd_title_size}{
-    The font size of legend title, like 12.
+    The font size of legend title, for example 12.
   }
   \item{lgd_title_font_face}{
-    The font face of legend title, like "plain", "italic", "bold" or "bold.italic".
+    The font face of legend title, for example "plain", "italic", "bold" or "bold.italic".
   }
   \item{lgd_text_size}{
-    The font size of legend tick label, like 10.
+    The font size of legend tick label, for example 10.
   }
   \item{lgd_text_font_face}{
-    The font face of legend tick label, like "plain", "italic", "bold" or "bold.italic".
+    The font face of legend tick label, for example "plain", "italic", "bold" or "bold.italic".
   }
   \item{ylabel}{
     Show or hide tick labels on the Y-axis.
     "1" means "show", while "2" means "hide".
   }
   \item{height_layer}{
-    Height of the track as 0.06. The number of values received through this parameter
+    Numeric value to set the height of the track. The number of values received through this parameter
     should be equal to that of the values received through the data.track parameter.
   }
   \item{margin_layer}{
-    Margin size of the track as 0.01. The number of values received through this parameter
+    Numeric value to set the margin size of the track. The number of values received through this parameter
     should be equal to that of the values received through the data.track parameter.
   }
   \item{chr_plotype}{
@@ -487,21 +488,21 @@ single_genome_plot(data.chr="", data.track="", plot_type="point",
     "1" means "Horizontally aligned", while "2" means "Vertically aligned".
   }
   \item{theme_sty}{
-    Select one figure theme from themes list "theme1", "theme2", "theme3",
+    Select one figure theme from the following theme list: "theme1", "theme2", "theme3",
     "theme4", "theme5", "theme6", "theme7", "theme8","theme9","theme10","theme11",
     "theme12", "theme13", "theme14", "theme15", "theme16", "theme17" and "theme18".
   }
   \item{font_size}{
-    Font size, like 16.
+    Numeric value to set the font size.
   }
   \item{xtitle}{
-    X axis title, like "Genomic position".
+    X axis title.
   }
   \item{ytitle}{
-    Y axis title, like "Value".
+    Y axis title.
   }
   \item{title_font_face}{
-    Font face, like "plain", "italic", "bold" or "bold.italic".
+    Font face of the plot title, for example "plain", "italic", "bold" or "bold.italic".
   }
   \item{xlabel}{
     Show or hide tick labels on the X-axis. "1" means "show", while "2" means "hide".
